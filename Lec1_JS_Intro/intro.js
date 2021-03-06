@@ -26,3 +26,41 @@ let data={
 console.log(data.movies.name);
 console.log(data.values);
 console.log(data.values[4][5]);
+let key = "name";
+data.key;
+// console.log( key );
+
+// bracket notation
+// console.log(data[key]);
+
+data.name = "I am a new Value";
+// console.log(data);
+
+// keys => unique
+// values => duplicate
+
+// Arrays
+
+// int arr[] = [10,20,30,50];
+// int arr[] = new int[10];
+
+let values = [
+  10,
+
+  false,
+
+  {
+    name: "Steve Rogers",
+    place: "Queens",
+  },
+  "Hey i am a value",
+  [1, 2, 3, 4, 5, 6],
+];
+
+// console.log(values);
+// console.log(values[2].place);
+
+
+// in loop
+for( let key in data ){
+    console.log(key);
