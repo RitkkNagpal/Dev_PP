@@ -5,7 +5,7 @@ let folderPath="./Downloads";
 let extFolderPath;
 
 // to check if the extension folder already exists or not
-function checkFolder(extension){
+function checkFolder(extension,folderPath){
     // checks if extension is matching with any folder name
     //.jpg
     //"./Downloads"
@@ -24,7 +24,7 @@ function checkFolder(extension){
     return fs.existsSync(extFolderPath);
 }
 
-function moveFile(fileName)
+function moveFile(fileName,folderPath)
 {
     //copy
     let sourceFilePath=`${folderPath}/${fileName}`;
@@ -47,16 +47,25 @@ function sortFolder(folderPath)
     for(let i=0;i<content.length;i++)
     {
         // get extensions of each file
-        let extensionName=path.extname(content[i]);
-        console.log(extensionName);
-        let extensionFolderExist=checkFolder(extensionName);//returns boolean value
-        if(extensionFolderExist)
+        let isDirectory=fs.lstatSync(`${folderPath}/${content[i]}`).isDirectory();
+        if(isDirectory)
         {
-            moveFile(content[i]);
+            console.log("It is a folder");
+            sortFolder(`${folderPath}/${content[i]}`);
         }
-        else{
-            createFolder();
-            moveFile(content[i]);
+        else
+        {
+            let extensionName=path.extname(content[i]);
+            console.log(extensionName);
+            let extensionFolderExist=checkFolder(extensionName,folderPath);//returns boolean value
+            if(extensionFolderExist)
+            {
+                moveFile(content[i],folderPath);
+            }
+            else{
+                createFolder();
+                moveFile(content[i],folderPath);
+            }
         }
     }
 }
