@@ -1,0 +1,98 @@
+[
+    {
+        "Issue Name": "Sequelize does not fill values in a cascade of associations",
+        "Issue Link": "/sequelize/sequelize/issues/13122"
+    },
+    {
+        "Issue Name": "Have a method to get model attributes",
+        "Issue Link": "/sequelize/sequelize/issues/13119"
+    },
+    {
+        "Issue Name": "Different included column name based on query conditions",
+        "Issue Link": "/sequelize/sequelize/issues/13117"
+    },
+    {
+        "Issue Name": "Order by Object and Include field",
+        "Issue Link": "/sequelize/sequelize/issues/13116"
+    },
+    {
+        "Issue Name": "Adding include properties within a through association",
+        "Issue Link": "/sequelize/sequelize/issues/13115"
+    },
+    {
+        "Issue Name": "QUESTION: Can you pass AWS IAM credentials?",
+        "Issue Link": "/sequelize/sequelize/issues/13114"
+    },
+    {
+        "Issue Name": "Use AsyncLocalStorage for cls",
+        "Issue Link": "/sequelize/sequelize/issues/13113"
+    },
+    {
+        "Issue Name": "Typescript: there is type error with UPDATE API.",
+        "Issue Link": "/sequelize/sequelize/issues/13112"
+    },
+    {
+        "Issue Name": "localAddress not in the doc - was it obsolete?",
+        "Issue Link": "/sequelize/sequelize/issues/13111"
+    },
+    {
+        "Issue Name": "belongsToMany throw SequelizeUniqueConstraintError on sqlite",
+        "Issue Link": "/sequelize/sequelize/issues/13110"
+    },
+    {
+        "Issue Name": "Many to many relationship creating duplicates instead of referring to existing row",
+        "Issue Link": "/sequelize/sequelize/issues/13109"
+    },
+    {
+        "Issue Name": "Typescript: instance property is missing in ValidationErrorItem",
+        "Issue Link": "/sequelize/sequelize/issues/13107"
+    },
+    {
+        "Issue Name": "Typescript:  Cannot use method sequelize.col for attributes option",
+        "Issue Link": "/sequelize/sequelize/issues/13104"
+    },
+    {
+        "Issue Name": "Date precision not working",
+        "Issue Link": "/sequelize/sequelize/issues/13103"
+    },
+    {
+        "Issue Name": "Where the $nested.column$ code is made?",
+        "Issue Link": "/sequelize/sequelize/issues/13099"
+    },
+    {
+        "Issue Name": "create() on polymorphic use case does not always work",
+        "Issue Link": "/sequelize/sequelize/issues/13098"
+    },
+    {
+        "Issue Name": "Roadmap for v7?",
+        "Issue Link": "/sequelize/sequelize/issues/13097"
+    },
+    {
+        "Issue Name": "Query result non-deterministic",
+        "Issue Link": "/sequelize/sequelize/issues/13088"
+    },
+    {
+        "Issue Name": "validate: {isUUID: 1} not working as expected",
+        "Issue Link": "/sequelize/sequelize/issues/13087"
+    },
+    {
+        "Issue Name": "Geometry broken in MySQL 8",
+        "Issue Link": "/sequelize/sequelize/issues/13086"
+    },
+    {
+        "Issue Name": "Model create not returning the id as string when using bigNumberStrings dialect options",
+        "Issue Link": "/sequelize/sequelize/issues/13085"
+    },
+    {
+        "Issue Name": "Separate queries are not querying unique sourceKeys",
+        "Issue Link": "/sequelize/sequelize/issues/13083"
+    },
+    {
+        "Issue Name": "TypeScript - CountOptions is missing 'replacements'",
+        "Issue Link": "/sequelize/sequelize/issues/13082"
+    },
+    {
+        "Issue Name": "Suboptimal performance for MSSQL Parameterized raw query on VARCHAR column",
+        "Issue Link": "/sequelize/sequelize/issues/13080"
+    }
+]
