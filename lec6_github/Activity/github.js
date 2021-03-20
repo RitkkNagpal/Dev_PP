@@ -64,7 +64,7 @@ function workOnSingleProject(projectArticleTag,topicName){
         for(let i=0;i<allIssueTags.length;i++)
         {
             let issueName=ch(allIssueTags[i]).text().trim();
-            let issueLink=ch(allIssueTags[i]).attr("href");
+            let issueLink="https://github.com"+ch(allIssueTags[i]).attr("href");
             if(!fs.existsSync(`${projectPath}/issues.json`))
             {
                 fs.writeFileSync(`${projectPath}/issues.json`,JSON.stringify([]));

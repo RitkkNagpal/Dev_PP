@@ -1,0 +1,22 @@
+[
+    {
+        "Issue Name": "What exactly is 'bias' in the context of the program?",
+        "Issue Link": "https://github.com/ssusnic/Machine-Learning-Flappy-Bird/issues/8"
+    },
+    {
+        "Issue Name": "Add speed control",
+        "Issue Link": "https://github.com/ssusnic/Machine-Learning-Flappy-Bird/issues/6"
+    },
+    {
+        "Issue Name": "Where is the back propagation? and is its target?",
+        "Issue Link": "https://github.com/ssusnic/Machine-Learning-Flappy-Bird/issues/4"
+    },
+    {
+        "Issue Name": "Why do you swap only bias from parents?",
+        "Issue Link": "https://github.com/ssusnic/Machine-Learning-Flappy-Bird/issues/2"
+    },
+    {
+        "Issue Name": "a step-by-step guide",
+        "Issue Link": "https://github.com/ssusnic/Machine-Learning-Flappy-Bird/issues/1"
+    }
+]
