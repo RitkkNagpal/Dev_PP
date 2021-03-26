@@ -69,16 +69,14 @@ function workOnSingleProject(projectArticleTag,topicName){
             {
                 fs.writeFileSync(`${projectPath}/issues.json`,JSON.stringify([]));
             }
-            else{
-                let issues=JSON.parse(fs.readFileSync(`${projectPath}/issues.json`));
-                let newIssue={
-                    "Issue Name" : issueName,
-                    "Issue Link" : issueLink
+            let issues=JSON.parse(fs.readFileSync(`${projectPath}/issues.json`));
+            let newIssue={
+                "Issue Name" : issueName,
+                "Issue Link" : issueLink
                 };
 
-                issues.push(newIssue);
-                fs.writeFileSync(`${projectPath}/issues.json`,JSON.stringify(issues));
-            }
+            issues.push(newIssue);
+            fs.writeFileSync(`${projectPath}/issues.json`,JSON.stringify(issues));            
         }
     }
 }
