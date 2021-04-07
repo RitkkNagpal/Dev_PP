@@ -45,7 +45,7 @@ let challenges=require("./challenges");
     for(let i=0;i<challenges.length;i++)
     {
         await addChallenge(challenges[i],browser,createChallengeLink)
-        await newTab.waitForTimeout(3000);
+        await tab.waitForTimeout(3000);
     } 
 
 //
@@ -75,6 +75,7 @@ async function addChallenge(challenge,browser,link){
     await newTab.waitForSelector("#name",{visible:true}); 
     await newTab.type("#name",challengeName)   
     await newTab.type("#preview",challengeDescription);
+    await newTab.waitForTimeout(2000);
     await newTab.type("#problem_statement-container .CodeMirror textarea",problemStatement);
     await newTab.type("#input_format-container .CodeMirror textarea",inputFormat);
     await newTab.type("#constraints-container .CodeMirror textarea",constraints);
