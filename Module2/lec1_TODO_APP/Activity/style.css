@@ -57,9 +57,13 @@ body{
     font-size: 1.4rem;
     text-align: center;
     margin-left: 60px;
+    word-break: break-all;
 }
 
 .delete-todo{
+    position: relative;
+    left:100px;
+    top:-1px;
     display: block;
     margin-top: 10px;
     margin-right: 16px;
