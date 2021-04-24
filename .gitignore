@@ -1,3 +1,7 @@
 node_modules
 IPL
 issues.json
+.vscode
+package-lock.json
+Downloads
+.gitignore
