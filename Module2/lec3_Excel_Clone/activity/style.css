@@ -20,7 +20,7 @@
 }
 
 .cells-content {
-    height: calc( 100vh - 150px); /*150 is sum of heights of menu menu-content and address-content and sheets*/
+    height: calc( 100vh - 150px);
     /* background: lightgreen; */
     overflow: auto;
     position: relative;
@@ -39,6 +39,7 @@
     border: 1px solid;
     min-height: 30px;
     min-width: 70px;
+    max-width: 70px;
 }
 
 .top-left-cell {
