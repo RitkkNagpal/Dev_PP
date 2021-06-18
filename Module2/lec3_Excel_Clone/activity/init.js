@@ -1,49 +1,70 @@
-let cellsContentDiv = document.querySelector(".cells-content");
-function initCells(){
-    let cellsContent = "<div class='top-left-cell'></div>";
-    cellsContent += "<div class='top-row'>"
-    for(let i=0 ; i<26 ; i++){
-        cellsContent += `<div class='top-row-cell'>${String.fromCharCode(65+i)}</div>`
-    }
-    cellsContent += "</div>"
+let cellsContentDiv=document.querySelector(".cells-content");
 
-    cellsContent += "<div class='left-col'>"
-    for(let i=0 ; i<100 ; i++){
-        cellsContent += `<div class="left-col-cell">${i+1}</div>`
+function initCells(){
+    let cellContent=`<div class="top-left-cell"></div>`;
+
+    cellContent+=`<div class="top-row">`;
+    //for putting alphabets in the front row
+    for(let i=0;i<26;i++)
+    {
+        cellContent+=`<div class="top-row-cell">${String.fromCharCode(65+i)}</div>`;
     }
-    cellsContent += "</div>"
-    cellsContent += "<div class='cells'>"
-    for(let i=0 ; i<100 ; i++){
-        cellsContent += "<div class='row'>"
-        for(let j=0 ; j<26 ; j++){
-            cellsContent += `<div class='cell' rowid='${i}' colid='${j}' contentEditable='true'></div>`
+    cellContent+=`</div>`;
+    
+    
+    cellContent+=`<div class="left-col">`;
+    for(let i=0;i<100;i++)
+    {
+        cellContent+=`<div class="left-col-cell">${i+1}</div>`;
+    }
+    cellContent+=`</div>`;
+    
+
+    cellContent+=`<div class="cells">`;
+    for(let i=0;i<100;i++)
+    {
+        cellContent+=`<div class="row">`;
+        for(let j=0;j<26;j++)
+        {
+            cellContent+=`<div class="cell" rowId="${i}" colId="${j}" contentEditable="true"></div>`;
         }
-        cellsContent += "</div>"
+        cellContent+=`</div>`;
     }
-    cellsContent += "</div>"
-    cellsContentDiv.innerHTML = cellsContent;    
+    cellContent+=`</div>`;
+
+    cellsContentDiv.innerHTML=cellContent;
 }
+
 initCells();
 
-let db;
-
+let sheetsDB=[];
+let db; //active sheet db
+let visitedCells; //active sheets ke visited cells
 function initDB(){
-    db = [];
-    for(let i=0 ; i<100 ; i++){
-        let row = [];
-        for(let j=0 ; j<26 ; j++){
-            //i j
-            let name = String.fromCharCode(j+65)+(i+1)+"";
-            let cellObject = {
+    let newSheetDB=[];
+    for(let i=0;i<100;i++)
+    {
+        let row=[];
+        for(let j=0;j<26;j++)
+        {
+            let name=String.fromCharCode(j+65)+(i+1)+"";
+            let cellObject={
                 name:name,
                 value:"",
-                formula:"",
-                childrens:[],
-                parents:[]
+                formula:"", 
+                children:[],
+                parents:[],
+                visited:false,
+                fontStyle: {bold : false, italic : false, underline : false}
             }
             row.push(cellObject);
         }
-        db.push(row);
+        newSheetDB.push(row);
     }
+    visitedCells=[];
+    sheetsDB.push({db : newSheetDB, visitedCells : visitedCells});
+    //here we are storing it in db as then we would have to change the name of db everywhere
+    db=newSheetDB; //now all work would be done on the current sheet db
 }
+
 initDB();

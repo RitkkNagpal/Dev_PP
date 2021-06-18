@@ -1,98 +1,124 @@
-let topRow = document.querySelector(".top-row");
-let leftCol = document.querySelector(".left-col");
-let topLeftCell = document.querySelector(".top-left-cell");
-let allCells = document.querySelectorAll(".cell");
-let addressInput = document.querySelector("#address");
-let formulaInput = document.querySelector("#formula");
+let topRow=document.querySelector(".top-row");
+let leftCol=document.querySelector(".left-col");
+let topLeftCell=document.querySelector(".top-left-cell")
+let allCells=document.querySelectorAll(".cell");
+let addressInput=document.querySelector("#address");
 let lastSelectedCell;
+let formulaInput=document.querySelector("#formula");
 
-cellsContentDiv.addEventListener("scroll" , function(e){
-    let top = e.target.scrollTop;
-    let left = e.target.scrollLeft;
+cellsContentDiv.addEventListener("scroll",function(e){
+    let top=e.target.scrollTop;
+    let left=e.target.scrollLeft;
+     
+    topRow.style.top=top + "px";
+    leftCol.style.left=left + "px";
+    topLeftCell.style.top=top + "px";
+    topLeftCell.style.left=left + "px";
+});
 
-    topRow.style.top = top + "px";
-    topLeftCell.style.top = top + "px";
-    topLeftCell.style.left = left + "px";
-    leftCol.style.left = left + "px";  
-})
-
-let rowId;
-let colId;
-
-for(let i=0 ; i<allCells.length ; i++){
-    allCells[i].addEventListener("click" , function(e){
-        rowId = Number(e.target.getAttribute("rowid"));
-        colId = Number(e.target.getAttribute("colid"));
-        let cellObject = db[rowId][colId];
+for(let i=0;i<allCells.length;i++)
+{
+    allCells[i].addEventListener("click",function(e){
+        let rowId=Number(e.target.getAttribute("rowId"));
+        let colId=Number(e.target.getAttribute("colId"));
+        let cellObject=db[rowId][colId];
         let address = String.fromCharCode(65+colId)+(rowId+1)+"";
-        addressInput.value = address;
-        formulaInput.value = cellObject.formula;
-    })
+        addressInput.value=address;
+        formulaInput.value=cellObject.formula;
 
-    allCells[i].addEventListener("blur" , function(e){
-        lastSelectedCell = e.target;
-        
-        let cellValue = e.target.textContent;
-        
-        // let rowId = e.target.getAttribute("rowid");
-        // let colId = e.target.getAttribute("colid");
-        let cellObject = db[rowId][colId];
-        
-        if(cellObject.value == cellValue){
+        if(cellObject.fontStyle.bold){
+            // agar font already bold hai
+            document.querySelector(".bold").classList.add("active-font-style");
+        }
+        else{
+            //agar nai bold to active filter hata lo( incase vo active hota to )
+            document.querySelector(".bold").classList.remove("active-font-style");
+        }
+
+        cellObject.fontStyle.italic 
+            ? document.querySelector(".italic").classList.add("active-font-style")
+            : document.querySelector(".italic").classList.remove("active-font-style");
+
+        cellObject.fontStyle.underline
+            ? document.querySelector(".underline").classList.add("active-font-style")
+            : document.querySelector(".underline").classList.remove("active-font-style");
+
+    });
+
+    allCells[i].addEventListener("blur",function(e){
+        lastSelectedCell=e.target;
+        let cellValue=e.target.textContent;
+        let rowId=Number(e.target.getAttribute("rowId"));
+        let colId=Number(e.target.getAttribute("colId"));
+        let cellObject=db[rowId][colId];
+        if(cellObject.value==cellValue && !cellObject.formula) // this step removes redundancy 
+        {
             return;
         }
 
         if(cellObject.formula){
             removeFormula(cellObject);
-            //formulaInput value = ""
             formulaInput.value="";
         }
-        
-        // db update , cellobject value if not same
-        cellObject.value = cellValue;
+        //update cell in db
+        cellObject.value=cellValue;
 
-        // updateChildrens
-        updateChildrens(cellObject);
-    })
+        //update children
+        updateChildren(cellObject);
 
-    allCells[i].addEventListener("keydown" , function(e){
-        if(e.key == "Backspace"){
-            let cell = e.target;
-            let {rowId , colId} = getRowIdColIdFromElement(cell);
-            let cellObject = db[rowId][colId];
+        if(cellObject.visited)
+        {
+            return;
+        }
+        cellObject.visited=true;
+        visitedCells.push({rowId:rowId,colId:colId});   
+    });
+
+    allCells[i].addEventListener("keydown",function(e){
+        if(e.key=="Backspace"){
+            let cell=e.target;
+            let{rowId,colId}=getRowIdColIdOfElement(cell);
+            let cellObject=db[rowId][colId];
             if(cellObject.formula){
-                cellObject.formula = "";
-                formulaInput.value = "";
+                cellObject.formula=""; 
+                formulaInput.value="";
                 removeFormula(cellObject);
-                cell.textContent = "";
+                cell.textContent="";
+
             }
         }
-    })
+    });
 }
 
-
-// when someone leaves the formula input !!
-formulaInput.addEventListener("blur" , function(e){
-    let formula = e.target.value;
-    // ( A1 + A2 )
+formulaInput.addEventListener("blur",function(e){
+    let formula=e.target.value;
     if(formula){
-        let {rowId , colId} = getRowIdColIdFromElement(lastSelectedCell);
-        let cellObject = db[rowId][colId];
+        let{rowId,colId}=getRowIdColIdOfElement(lastSelectedCell);
+        let cellObject=db[rowId][colId];
 
-        // if cellObject already had a formula
-        if(cellObject.formula){
+        // if cell object already has a formula
+        if(cellObject.formula)
+        {
             removeFormula(cellObject);
         }
+        let computedValue=solveFormula(formula,cellObject);
+        cellObject.value=computedValue;
+        cellObject.formula=formula;
 
+        //ui update
+        lastSelectedCell.textContent=computedValue;
+        // console.log(db);
 
-        let computedValue = solveFormula(formula , cellObject);
-        // formula update
-        cellObject.formula = formula;
-        // cellObject value update
-        cellObject.value = computedValue;
-        // ui update
-        lastSelectedCell.textContent = computedValue;
-        // update childrens !!!
-        updateChildrens(cellObject);
+        //update children
+        updateChildren(cellObject);
+        
+        
+        if(cellObject.visited)
+        {
+            return;
+        }
+        cellObject.visited=true;
+        visitedCells.push({rowId:rowId,colId:colId});   
+        console.log(sheetsDB);
     }
 })

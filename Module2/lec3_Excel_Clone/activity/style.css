@@ -1,78 +1,73 @@
 * {
-    box-sizing: border-box;
     margin: 0px;
     padding: 0px;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
 }
 
 .menu {
-    border: 1px solid;
     height: 30px;
+    /* border: 1px solid; */
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
 }
 
 .menu-options {
-    border: 1px solid;
     height: 60px;
+    border: 1px solid;
 }
 
 .address-content {
-    border: 1px solid;
     height: 30px;
-}
-
-.cells-content {
-    height: calc( 100vh - 150px);
-    /* background: lightgreen; */
-    overflow: auto;
-    position: relative;
+    border: 1px solid;
 }
 
 .sheets {
-    border: 1px solid;
     height: 30px;
-}
-
-.row {
+    /* border: 1px solid; */
+    background: #ECF0F1;
     display: flex;
+    align-items: center;
 }
 
-.cell {
-    border: 1px solid;
-    min-height: 30px;
-    min-width: 70px;
-    max-width: 70px;
+.cells-content {
+    height: calc(100vh - 150px);
+    position: relative;
+    overflow: auto;
 }
 
 .top-left-cell {
     height: 30px;
     width: 30px;
-    background: lightgray;
     position: absolute;
+    background-color: lightgray;
     z-index: 3;
 }
 
 .top-row {
     display: flex;
     position: absolute;
-    background: lightgreen;
     top: 0px;
     left: 30px;
+    background: lightgreen;
     z-index: 2;
 }
 
 .top-row-cell {
     border: 1px solid;
-    min-height: 30px;
     min-width: 70px;
+    min-height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .left-col {
-    background: lightgreen;
     width: 30px;
-    position: absolute;
+    background: lightgreen;
     top: 30px;
+    position: absolute;
     z-index: 2;
 }
 
@@ -80,14 +75,126 @@
     height: 30px;
     width: 30px;
     border: 1px solid;
-    /* text-align: center; */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.cell {
+    min-width: 70px;
+    min-height: 30px;
+    max-width: 70px;
+    border: 1px solid;
+}
+
+.row {
+    display: flex;
+}
+
 .cells {
     position: absolute;
-    top: 30px;
     left: 30px;
+    top: 30px;
+}
+
+.add-sheet {
+    height: 100%;
+    /* background: aqua; */
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid lightgray;
+}
+
+.add-sheet .fas {
+    color: #2ecc71;
+}
+
+.sheets-list {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.sheet {
+    border-right: 1px solid lightgray;
+    width: 70px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.active-sheet {
+    background: white;
+    font-weight: bold;
+}
+
+.menu div {
+    width: 60px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid lightgray;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.file-menu-options {
+}
+
+.home-menu-options {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.active-menu {
+    background: white;
+    font-weight: bold;
+}
+
+.hide {
+    display: none;
+}
+
+.font-style {
+    height: 100%;
+    width: 100px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-right: 1px solid lightgray;
+}
+
+.bold {
+}
+
+.italics {
+}
+
+.underline {
+}
+
+.font-style div {
+    cursor: pointer;
+    height: 25px;
+    width:  25px;
+    border-radius:5px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.font-style div fas {
+}
+
+.active-font-style {
+    background-color: #bdc3c7;
+}
+.font-style div:hover {
+    background-color: #bdc3c7;
+    opacity: 0.5;
 }
