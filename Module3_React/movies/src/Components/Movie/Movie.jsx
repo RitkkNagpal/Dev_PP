@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { IMG_URL } from '../../API/secrets';
+import "./Movie.css"
+
 class Movies extends Component {
     state = {  }
     render() { 

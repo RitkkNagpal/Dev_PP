@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import Movie from "../Movie/Movie"
+import "./Movies.css";
 class Movies extends Component {
     state = {  }
     render() { 
-        return (<React.Fragment>
+        return (<div className = "movies">
             {
                 this.props.moviesData.map((movieObject)=>{
                     return<Movie key = {movieObject.id} movie = {movieObject}></Movie>
                 })
             }
-        </React.Fragment>);
+        </div>);
     }
 }
  
