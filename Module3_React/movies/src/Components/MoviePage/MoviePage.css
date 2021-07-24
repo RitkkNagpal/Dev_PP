@@ -1,0 +1,44 @@
+.movie-page{
+    height: calc(100vh - 50px);
+    position: relative;
+    
+}
+
+.movie-page-poster{
+    height: 100%;
+    width: 100%;
+}
+.movie-page-poster img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    opacity: 0.4;
+}
+
+.movie-page-details{
+    height: 100%;
+    width: 100% ;
+    color: aliceblue;
+    position: absolute;
+    top:0px;
+    padding: 40px;
+}
+
+.tagline{
+    font-weight: bold;
+    color:floralwhite;
+}
+.imdb-rating{
+    font-size: 1.2rem;
+    border-radius: 10px;
+    padding: 3px;
+    background-color: #E2B616;
+    color: black;
+}
+.trailer{
+    height: 65%;
+}
+        
+.trailer div{
+    height: 100%;
+}
