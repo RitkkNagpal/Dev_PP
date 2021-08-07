@@ -25,7 +25,11 @@ const UseEffect = () => {
   }, []); // empty condition passed
 
   useEffect(() => {
-    console.log("This will be executed only after tasklist is updated");
+    console.log("This will be executed only after tasklist is updated")
+
+    return function(){
+      console.log("This is a cleanup function"); // it executes when the next useEffect executes (before the body of useEffect runs)
+    }
   }, [taskList]); // tasklist is passed as the condition of invokation
 
   return (
